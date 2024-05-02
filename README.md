@@ -1,6 +1,12 @@
 # Xfoil cal
 > use xfoil calculate Cl/Cd performance in Linux
 
-- 更改config.yaml的xfoil目录，将xfoil可执行文件拉到当前文件夹
 
-- 翼型存放在foil文件夹.dat格式，输出结果至result文件夹
+## Installation
+
+```bash
+conda create --name airfoil python=3.8
+conda activate airfoil
+pip install -r requirements.txt
+```
+
