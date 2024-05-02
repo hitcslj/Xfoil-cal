@@ -1,0 +1,25 @@
+setup:
+  xfoil_path: ""      # Path to xfoil directory
+
+  # Path files, relative to 'xfoil_path'
+  polarfiles_dir: "Saved_Polarfiles/"
+  dump_dir: "Saved_DUMPfiles/"
+  cpwr_dir: "Saved_CPWRfiles/"
+
+  n_panelnodes: 400                 # Number of panel nodes (for XFoil)
+  n_iter: 100                       # Number of iterations for each calculation (for XFoil)
+
+
+variables:
+  cl_required: 0.576                # For plotting a specific cl
+
+
+# Variables specific to Sequence_calc.py & Sequence_plot.py
+sequence_variables:
+  alpha_i: 0                      # Initial Angle of Attack
+  alpha_f: 2                       # Final Angle of Attack
+  alpha_step: 0.2                   # Steps to get from alpha_i to alpha_f
+
+# Variables specific to Single_calc.py & Single_plot.py
+single_variables:
+  chord: 0.136                      # Chord length

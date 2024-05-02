@@ -1,0 +1,21 @@
+LOAD foil/a18.dat
+a18
+PLOP
+G F
+
+PPAR
+n 400
+
+
+PANE
+OPER
+Visc 1000000
+Mach 0.4
+PACC
+result/a18/0.4
+
+ITER 100
+CSeq 0 2 0.2
+
+
+quit
