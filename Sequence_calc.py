@@ -64,7 +64,7 @@ def main(args: argparse.Namespace):
 
 
         # Running calculations in XFOIL
-        Popen("xfoil-install/bin/xfoil < input_file.in", shell=True)
+        Popen("xfoil < input_file.in", shell=True)
         time.sleep(1.5)
 
 
