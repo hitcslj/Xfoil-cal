@@ -10,3 +10,6 @@ conda activate airfoil
 pip install -r requirements.txt
 ```
 
+## Reference
+
+- [xfoil](https://github.com/RobotLocomotion/xfoil)
