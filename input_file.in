@@ -1,5 +1,5 @@
-LOAD foil/m14_cst_4.dat
-m14_cst_4
+LOAD foil/2032c_cst_0.dat
+2032c_cst_0
 PLOP
 G F
 
@@ -10,9 +10,9 @@ n 400
 PANE
 OPER
 Visc 1000000
-Mach 0.3
+Mach 0.6
 PACC
-result/m14_cst_4/0.3
+result/2032c_cst_0/0.6
 
 ITER 100
 CSeq 0 2 0.2

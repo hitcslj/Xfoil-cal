@@ -6,7 +6,6 @@ import os
 from subprocess import Popen
 
 
-
 def main(args: argparse.Namespace):
 
     # Open + read YAML config file
@@ -32,12 +31,13 @@ def main(args: argparse.Namespace):
             os.remove(output_file_name)
 
         with open("input_file.in", 'w') as input_file:
-            input_file.write('LOAD foil/' + airfoil_name + '.dat' + '\n')
-            input_file.write( airfoil_name + '\n' )
+            input_file.write('LOAD cst_gen/' + airfoil_name + '.dat' + '\n')
+            input_file.write(airfoil_name + '\n' )
             input_file.write('PLOP\n')
             input_file.write('G F\n\n')
             input_file.write("PPAR\n")
             input_file.write(f"n {cfg['setup']['n_panelnodes']}\n\n\n")
+
 
             input_file.write("PANE\n")
             input_file.write("OPER\n")
@@ -63,7 +63,7 @@ def main(args: argparse.Namespace):
 
 
         # Running calculations in XFOIL
-        Popen("./xfoil < input_file.in", shell=True)
+        Popen("xfoil < input_file.in", shell=True)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -79,7 +79,6 @@ if __name__ == "__main__":
 
     parser.add_argument('-n', '--aerofoil_names', nargs='+', default=['NACA0012', 'NACA0013', 'NACA0014'],
                         help='NACA 4-digit aerofoils to test (in "NACAxxxx" form)')
-    
 
     
     args = parser.parse_args()
