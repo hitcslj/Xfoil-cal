@@ -162,3 +162,5 @@ cython_debug/
 __pycache__/
 result
 Saved_Polarfiles
+cst_gen
+input_file.in
