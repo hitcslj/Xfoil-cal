@@ -1,5 +1,5 @@
-LOAD foil/a18.dat
-a18
+LOAD foil/m14_cst_4.dat
+m14_cst_4
 PLOP
 G F
 
@@ -10,9 +10,9 @@ n 400
 PANE
 OPER
 Visc 1000000
-Mach 0.4
+Mach 0.3
 PACC
-result/a18/0.4
+result/m14_cst_4/0.3
 
 ITER 100
 CSeq 0 2 0.2

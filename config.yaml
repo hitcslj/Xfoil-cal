@@ -1,7 +1,4 @@
 setup:
-  xfoil_path: ""      # Path to xfoil directory
-
-  # Path files, relative to 'xfoil_path'
   polarfiles_dir: "Saved_Polarfiles/"
   dump_dir: "Saved_DUMPfiles/"
   cpwr_dir: "Saved_CPWRfiles/"

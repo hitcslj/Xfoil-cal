@@ -21,7 +21,6 @@ def main(args: argparse.Namespace):
     if not os.path.isdir(cfg['setup']['polarfiles_dir']):
         os.mkdir(cfg['setup']['polarfiles_dir'])
 
-
     # --------------------------------------------------------------------------
     # XFOIL input file writer
 
@@ -64,13 +63,7 @@ def main(args: argparse.Namespace):
 
 
         # Running calculations in XFOIL
-        Popen("xfoil < input_file.in", shell=True)
-        time.sleep(1.5)
-
-
-
-
-
+        Popen("./xfoil < input_file.in", shell=True)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -91,5 +84,3 @@ if __name__ == "__main__":
     
     args = parser.parse_args()
     main(args)
-
-    # print(args)
