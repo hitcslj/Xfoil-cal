@@ -63,7 +63,7 @@ def main(args: argparse.Namespace):
 
 
         # Running calculations in XFOIL
-        Popen("xfoil < input_file.in", shell=True)
+        Popen("./xfoil < input_file.in", shell=True)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
