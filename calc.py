@@ -18,7 +18,7 @@ if __name__ == "__main__":
     
     args = parser.parse_args()
 
-    data_path = './foil'
+    data_path = './cst_gen'
     names = os.listdir(data_path)
     names.sort()
     n = len(names)
