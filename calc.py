@@ -26,12 +26,12 @@ if __name__ == "__main__":
     names.sort()
     n = len(names)
     mas = [0.2,0.3,0.4,0.5,0.6,0.7]
-    s,t = min(args.s,n-1),min(args.t,n-1)
-    for name in names[s:t+1]:
+    s,e = min(args.s,n-1),min(args.e,n-1)
+    for name in names[s:e+1]:
         process_file(name)
     print("Done!")  
 '''
-python calc.py --data_path /home/bingxing2/ailab/scxlab0059/data/airfoil/cst_gen --s 0 --e 9999
+python calc.py --data_path ~/airfoil/cst_gen --s 0 --e 9999
 python calc.py --data_path /home/bingxing2/ailab/scxlab0059/data/airfoil/cst_gen --s 10000 --e 19999
 python calc.py --data_path /home/bingxing2/ailab/scxlab0059/data/airfoil/cst_gen --s 20000 --e 29999
 python calc.py --data_path /home/bingxing2/ailab/scxlab0059/data/airfoil/cst_gen --s 30000 --e 39999
