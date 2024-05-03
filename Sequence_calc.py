@@ -31,7 +31,7 @@ def main(args: argparse.Namespace):
             os.remove(output_file_name)
 
         with open("input_file.in", 'w') as input_file:
-            input_file.write('LOAD cst_gen/' + airfoil_name + '.dat' + '\n')
+            input_file.write('LOAD foil/' + airfoil_name + '.dat' + '\n')
             input_file.write(airfoil_name + '\n' )
             input_file.write('PLOP\n')
             input_file.write('G F\n\n')
@@ -56,13 +56,18 @@ def main(args: argparse.Namespace):
                 input_file.write("y\n\n")
 
             input_file.write(f"ITER {cfg['setup']['n_iter']}\n")
-            input_file.write(f"CSeq {cfg['sequence_variables']['alpha_i']} {cfg['sequence_variables']['alpha_f']} {cfg['sequence_variables']['alpha_step']}\n")
+            input_file.write(f"CSeq {cfg['sequence_variables']['cl_i']} {cfg['sequence_variables']['cl_f']} {cfg['sequence_variables']['cl_step']}\n")
 
             input_file.write("\n\n")
             input_file.write("quit\n")
 
-
-        # Running calculations in XFOIL
+        
+        # Running calculations in XFOIL 
+        # (ARM linux) ./xfoil_linux_arm
+        # (x86-64 linux) ./xfoil
+        # (windows) ./xfoil.exe
+        
+        
         Popen("./xfoil < input_file.in", shell=True)
 
 if __name__ == "__main__":

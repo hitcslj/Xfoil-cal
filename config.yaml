@@ -13,9 +13,9 @@ variables:
 
 # Variables specific to Sequence_calc.py & Sequence_plot.py
 sequence_variables:
-  alpha_i: 0                      # Initial Angle of Attack
-  alpha_f: 2                       # Final Angle of Attack
-  alpha_step: 0.2                   # Steps to get from alpha_i to alpha_f
+  cl_i: 0                      # Initial Cl
+  cl_f: 2                       # Final Cl
+  cl_step: 0.2                   # Steps to get from cl_i to cl_f
 
 # Variables specific to Single_calc.py & Single_plot.py
 single_variables:

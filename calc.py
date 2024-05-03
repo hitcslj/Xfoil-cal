@@ -13,12 +13,12 @@ if __name__ == "__main__":
 
     parser.add_argument("--s", type=int, default=0,
                         help="start index")
-    parser.add_argument("--e", type=int, default=1,
+    parser.add_argument("--e", type=int, default=100,
                     help="end index")
     
     args = parser.parse_args()
 
-    data_path = './cst_gen'
+    data_path = './foil'
     names = os.listdir(data_path)
     names.sort()
     n = len(names)
@@ -27,6 +27,7 @@ if __name__ == "__main__":
     for name in names[s:e+1]:
         process_file(name)
     print("Done!")  
+    
 '''
 python calc.py  --s 0 --e 9999
 python calc.py  --s 10000 --e 19999
