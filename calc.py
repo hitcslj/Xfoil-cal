@@ -4,7 +4,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 def process_file(name, mas):
     for m in mas:
-        command = f'python Sequence_calc.py -r 1000000 -m {m} -n {name.split(".")[0]}'
+        command = f'python sequence_calc.py -r 1000000 -m {m} -n {name.split(".")[0]}'
         os.system(command)
 
 if __name__ == "__main__":
@@ -34,25 +34,6 @@ if __name__ == "__main__":
             future.result()
     
     print("Done!")
-
-    
-'''
-python calc.py  --s 0 --e 9999
-python calc.py  --s 10000 --e 19999
-python calc.py  --s 20000 --e 29999
-python calc.py  --s 30000 --e 39999
-python calc.py  --s 40000 --e 49999
-python calc.py  --s 50000 --e 59999
-python calc.py  --s 60000 --e 69999
-python calc.py  --s 70000 --e 79999
-python calc.py  --s 80000 --e 89999
-python calc.py  --s 90000 --e 99999
-python calc.py  --s 100000 --e 109999
-python calc.py  --s 110000 --e 119999
-python calc.py  --s 120000 --e 129999
-python calc.py  --s 130000 --e 139999
-python calc.py  --s 140000 --e 149999
-'''
     
     
 
