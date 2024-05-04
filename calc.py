@@ -24,7 +24,7 @@ if __name__ == "__main__":
     mas = [0.2,0.3,0.4,0.5,0.6,0.7]
     s,e = min(args.s,n-1),min(args.e,n-1)
     
-    with ThreadPoolExecutor(max_workers=10) as executor:
+    with ThreadPoolExecutor(max_workers=100) as executor:
         futures = []
         for name in names[s:e+1]:
             futures.append(executor.submit(process_file, name, mas))
