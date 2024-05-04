@@ -1,19 +1,18 @@
 import os
 import argparse
-import subprocess
+from concurrent.futures import ThreadPoolExecutor
 
-
-def process_file(name):
-    for i in range(len(mas)):
-        command = f'python Sequence_calc.py -r 1000000 -m {mas[i]} -n {name.split(".")[0]}'
-        subprocess.run(command, shell=True)
+def process_file(name, mas):
+    for m in mas:
+        command = f'python Sequence_calc.py -r 1000000 -m {m} -n {name.split(".")[0]}'
+        os.system(command)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     parser.add_argument("--s", type=int, default=0,
                         help="start index")
-    parser.add_argument("--e", type=int, default=100,
+    parser.add_argument("--e", type=int, default=10,
                     help="end index")
     
     args = parser.parse_args()
@@ -24,9 +23,18 @@ if __name__ == "__main__":
     n = len(names)
     mas = [0.2,0.3,0.4,0.5,0.6,0.7]
     s,e = min(args.s,n-1),min(args.e,n-1)
-    for name in names[s:e+1]:
-        process_file(name)
-    print("Done!")  
+    
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        futures = []
+        for name in names[s:e+1]:
+            futures.append(executor.submit(process_file, name, mas))
+        
+        # 等待所有任务完成
+        for future in futures:
+            future.result()
+    
+    print("Done!")
+
     
 '''
 python calc.py  --s 0 --e 9999
