@@ -13,8 +13,8 @@ def write_xfoil_input(airfoil_name, config, args):
     output_dir = os.path.join('result', airfoil_name)
     os.makedirs(output_dir, exist_ok=True)
     output_file_name = getOutputFileName(OutputFiles.POLAR, config['setup']['polarfiles_dir'])(airfoil_name)
-    if os.path.exists(output_file_name):
-        return 'continue'
+    if args.delete_old and os.path.exists(output_file_name):
+        os.remove(output_file_name)
 
     input_file_path = os.path.join(output_dir, 'input_file.in')
     with open(input_file_path, 'w') as input_file:
@@ -49,7 +49,7 @@ def write_xfoil_input(airfoil_name, config, args):
 
 def run_xfoil(input_file_path):
     try:
-        subprocess.run(["./xfoil"], stdin=open(input_file_path), timeout=300, shell=True)  # 设置超时时间为300秒
+        subprocess.run(["./xfoil_linux_arm"], stdin=open(input_file_path), timeout=300, shell=True)  # 设置超时时间为300秒
     except subprocess.TimeoutExpired:
         print("XFoil process timed out.")
 
@@ -58,8 +58,6 @@ def main(args):
 
     for airfoil_name in args.aerofoil_names:
         input_file_path = write_xfoil_input(airfoil_name, config, args)
-        if input_file_path == 'continue':
-            continue
         run_xfoil(input_file_path)
 
 if __name__ == "__main__":
@@ -70,6 +68,9 @@ if __name__ == "__main__":
     
     parser.add_argument("-m", "--mach_num", type=float, default=0,
                         help="Value of Mach Number as integer")
+    
+    parser.add_argument('-o', '--delete_old', action='store_false', default=True,
+                        help='If NOT FLAGGED (true), deletes any previously stored data for inputted aerofoils, else if FLAGGED (false), appends new data to this previously stored data')
     
     parser.add_argument('-n', '--aerofoil_names', nargs='+', default=['NACA0012', 'NACA0013', 'NACA0014'],
                         help='NACA 4-digit aerofoils to test (in "NACAxxxx" form)')
