@@ -48,7 +48,10 @@ def write_xfoil_input(airfoil_name, config, args):
     return input_file_path
 
 def run_xfoil(input_file_path):
-    subprocess.run(["./xfoil"], stdin=open(input_file_path), shell=True)
+    try:
+        subprocess.run(["./xfoil"], stdin=open(input_file_path), timeout=300, shell=True)  # 设置超时时间为300秒
+    except subprocess.TimeoutExpired:
+        print("XFoil process timed out.")
 
 def main(args):
     config = load_config('config.yaml')

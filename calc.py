@@ -1,6 +1,6 @@
 import os
 import argparse
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, wait, TimeoutError
 
 def process_file(name, mas):
     for m in mas:
@@ -29,11 +29,20 @@ if __name__ == "__main__":
         for name in names[s:e+1]:
             futures.append(executor.submit(process_file, name, mas))
         
-        # 等待所有任务完成
-        for future in futures:
-            future.result()
+        # 设置超时时间为5分钟
+        try:
+            wait(futures, timeout=300)  # 等待所有任务完成，超时时间为5分钟
+        except TimeoutError:
+            print("Timeout reached! Resubmitting unfinished tasks...")
+            # 获取未完成的任务
+            unfinished_tasks = [future for future in futures if not future.done()]
+            # 重新提交未完成的任务
+            new_futures = []
+            for future in unfinished_tasks:
+                name = names[s:e+1][futures.index(future)]
+                new_futures.append(executor.submit(process_file, name, mas))
+            # 等待重新提交的任务完成
+            wait(new_futures)
+            print("Unfinished tasks resubmitted and completed.")
     
     print("Done!")
-    
-    
-
