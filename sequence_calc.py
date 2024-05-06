@@ -34,7 +34,7 @@ def write_xfoil_input(airfoil_name, config, args):
             input_file.write(f"Mach {args.mach_num}\n")
             
         input_file.write("PACC\n")
-        input_file.write(f"{output_dir}/{args.mach_num}\n\n")
+        input_file.write(f"{output_dir}/{args.mach_num}.txt\n\n")
 
         if not args.delete_old:
             input_file.write("y\n\n")
