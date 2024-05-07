@@ -1,6 +1,7 @@
 import os
 from multiprocessing import Pool
 
+
 def process_file(airfoil_result_path):
     # 遍历airfoil_result_path里面的文件
     for root, dirs, files in os.walk(airfoil_result_path):
